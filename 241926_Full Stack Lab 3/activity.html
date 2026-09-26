@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bootstrap Tutorial</title>
+
+<!-- Bootstrap CSS (local) -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome (for icons) - via CDN, needs internet -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Your custom CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ======================= SIDEBAR ======================= -->
+  <nav class="sidebar" id="sidebarNav">
+    <div class="sidebar-header">
+      <a class="sidebar-brand" href="#">
+        <i class="fas fa-code"></i>
+        <span>Bootstrap<br>Tutorial</span>
+      </a>
+      <button class="sidebar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarBody" aria-label="Toggle menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="collapse d-lg-block sidebar-body" id="sidebarBody">
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#grid" class="sidebar-link active">
+            <i class="fas fa-table-cells"></i><span>Grid System</span>
+          </a>
+        </li>
+        <li>
+          <a href="#flexbox" class="sidebar-link">
+            <i class="fas fa-arrows-left-right"></i><span>Flexbox</span>
+          </a>
+        </li>
+        <li>
+          <a href="#components" class="sidebar-link">
+            <i class="fas fa-cubes"></i><span>Components</span>
+          </a>
+        </li>
+        <li class="sidebar-group">
+          <button class="sidebar-link sidebar-group-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#moreLinks" aria-expanded="false">
+            <i class="fas fa-ellipsis"></i><span>More</span>
+            <i class="fas fa-chevron-down sidebar-caret"></i>
+          </button>
+          <ul class="collapse sidebar-submenu" id="moreLinks">
+            <li><a href="#buttons" class="sidebar-sublink">Buttons</a></li>
+            <li><a href="#cards" class="sidebar-sublink">Cards</a></li>
+            <li><a href="#media-queries" class="sidebar-sublink">Media Queries</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <p>Built with HTML, CSS &amp; Bootstrap 5</p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Middle/main content intentionally removed - sidebar only -->
+</div>
+
+<!-- Bootstrap JS bundle (local) -->
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

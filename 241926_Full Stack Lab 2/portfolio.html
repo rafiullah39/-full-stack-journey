@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rafi Ullah — CS Student &amp; Software Developer</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg-primary: #FAF9F6;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F1EC;
+      --border-subtle: #E8E5DF;
+
+      --text-main: #1D1E2C;
+      --text-muted: #5F637A;
+      --text-light: #8E92A4;
+
+      --accent-coral: #FF5A36;
+      --accent-coral-soft: #FFF0EB;
+      --accent-coral-hover: #E44826;
+
+      --accent-indigo: #5046E5;
+      --accent-indigo-soft: #EEF0FF;
+
+      --shadow-sm: 0 2px 8px rgba(29, 30, 44, 0.04);
+      --shadow-md: 0 8px 24px -4px rgba(29, 30, 44, 0.08), 0 2px 6px -1px rgba(29, 30, 44, 0.04);
+      --shadow-lg: 0 16px 36px -6px rgba(29, 30, 44, 0.12), 0 4px 12px -2px rgba(29, 30, 44, 0.06);
+      --shadow-coral: 0 10px 24px -4px rgba(255, 90, 54, 0.35);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --sidebar-width: 380px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .app-layout {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100vh;
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .sidebar {
+      width: 100%;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 2.25rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      z-index: 40;
+    }
+
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+    }
+
+    .avatar-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+      border: 3.5px solid #FFFFFF;
+      box-shadow: 0 8px 20px rgba(255, 90, 54, 0.2), 0 0 0 3px var(--accent-coral);
+      background: linear-gradient(135deg, #FF8A00, #FF5A36, #7928CA);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 800;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .status-badge {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: #10B981;
+      width: 18px;
+      height: 18px;
+      border-radius: var(--radius-full);
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      animation: pulse-dot 2.5s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.15); opacity: 0.85; }
+    }
+
+    .profile-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .profile-name {
+      font-size: 1.95rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      line-height: 1.15;
+    }
+
+    .name-highlight {
+      background: linear-gradient(135deg, var(--accent-coral), #FF8A00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .profile-tagline {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--accent-indigo);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-indigo-soft);
+      padding: 0.28rem 0.75rem;
+      border-radius: var(--radius-full);
+      width: fit-content;
+    }
+
+    .profile-bio {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .sidebar-nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin: 0.75rem 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .nav-link svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-coral);
+      background: var(--accent-coral-soft);
+      transform: translateX(4px);
+    }
+
+    .nav-link:hover svg, .nav-link.active svg {
+      stroke: var(--accent-coral);
+    }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .social-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .social-btn:hover {
+      background: var(--accent-coral);
+      border-color: var(--accent-coral);
+      color: #FFFFFF;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(255, 90, 54, 0.3);
+    }
+
+    .sidebar-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      background: linear-gradient(135deg, var(--accent-coral), #FF7A45);
+      color: #FFFFFF;
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+      box-shadow: var(--shadow-coral);
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-download:hover {
+      background: linear-gradient(135deg, var(--accent-coral-hover), #FF6332);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -4px rgba(255, 90, 54, 0.45);
+      color: #FFFFFF;
+    }
+
+    .btn-download svg {
+      width: 19px;
+      height: 19px;
+      stroke-width: 2.2;
+    }
+
+    .resume-note {
+      font-size: 0.76rem;
+      color: var(--text-light);
+      text-align: center;
+      font-style: italic;
+    }
+
+    .badge-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border-subtle);
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .info-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--accent-coral);
+      flex-shrink: 0;
+    }
+
+    .main-content {
+      width: 100%;
+      padding: 2.5rem 1.5rem 5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      scroll-margin-top: 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      position: relative;
+    }
+
+    .section-header::after {
+      content: '';
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--border-subtle), transparent);
+    }
+
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-coral);
+      background: var(--accent-coral-soft);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-main);
+    }
+
+    .about-lead {
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: var(--text-main);
+      font-weight: 400;
+    }
+
+    .about-lead strong {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .about-highlight-box {
+      background: linear-gradient(135deg, rgba(80, 70, 229, 0.04), rgba(255, 90, 54, 0.05));
+      border: 1px solid rgba(80, 70, 229, 0.15);
+      border-left: 4px solid var(--accent-indigo);
+      border-radius: var(--radius-md);
+      padding: 1.35rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .about-highlight-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--accent-indigo);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .about-highlight-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .about-highlight-text strong {
+      color: var(--text-main);
+    }
+
+    .about-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .metric-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(255, 90, 54, 0.3);
+    }
+
+    .metric-val {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--accent-coral);
+    }
+
+    .metric-label {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 0.2rem;
+    }
+
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .skill-group-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-group-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .skill-group-card.languages::before {
+      background: linear-gradient(90deg, var(--accent-coral), #FFB800);
+    }
+
+    .skill-group-card.frameworks::before {
+      background: linear-gradient(90deg, var(--accent-indigo), #38BDF8);
+    }
+
+    .skill-group-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-group-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .languages .skill-group-icon {
+      background: var(--accent-coral-soft);
+      color: var(--accent-coral);
+    }
+
+    .frameworks .skill-group-icon {
+      background: var(--accent-indigo-soft);
+      color: var(--accent-indigo);
+    }
+
+    .skill-group-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .skill-group-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .skill-tags-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.6rem 1rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-main);
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .skill-chip .chip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--accent-coral);
+    }
+
+    .frameworks .skill-chip .chip-dot {
+      background: var(--accent-indigo);
+    }
+
+    .skill-chip:hover {
+      background: #FFFFFF;
+      border-color: var(--accent-coral);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      color: var(--accent-coral);
+    }
+
+    .frameworks .skill-chip:hover {
+      border-color: var(--accent-indigo);
+      color: var(--accent-indigo);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .project-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(255, 90, 54, 0.25);
+    }
+
+    .project-banner {
+      height: 125px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.75rem;
+    }
+
+    .banner-daira {
+      background: linear-gradient(135deg, #FF6B4A 0%, #FF8A00 50%, #FFA826 100%);
+    }
+
+    .banner-educonnect {
+      background: linear-gradient(135deg, #4338CA 0%, #6366F1 50%, #818CF8 100%);
+    }
+
+    .banner-crm {
+      background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 50%, #38BDF8 100%);
+    }
+
+    .banner-bloodbank {
+      background: linear-gradient(135deg, #DC2626 0%, #EF4444 50%, #F87171 100%);
+    }
+
+    .banner-evm {
+      background: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%);
+    }
+
+    .banner-pattern {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0.12;
+      background-image: radial-gradient(#FFFFFF 2px, transparent 2px);
+      background-size: 16px 16px;
+      pointer-events: none;
+    }
+
+    .project-banner-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .project-banner-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .project-badge-pill {
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--text-main);
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .project-body {
+      padding: 1.5rem 1.75rem 1.75rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .project-heading-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .project-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .project-desc {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .project-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: auto;
+    }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent-indigo);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-sm);
+      background: var(--accent-indigo-soft);
+      transition: var(--transition);
+    }
+
+    .btn-github svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .btn-github:hover {
+      background: var(--accent-indigo);
+      color: #FFFFFF;
+      transform: translateX(3px);
+    }
+
+    .education-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .edu-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .edu-institution {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .edu-location-badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+    }
+
+    .edu-degree {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent-coral);
+    }
+
+    .edu-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      padding: 1.25rem;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .edu-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .edu-stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .edu-stat-value {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .edu-cgpa-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #059669;
+    }
+
+    .contact-card {
+      background: linear-gradient(145deg, #FFFFFF, #FFF9F7);
+      border: 1.5px solid rgba(255, 90, 54, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .contact-invitation {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .contact-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-channel {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem 1.15rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-channel-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .channel-email .contact-channel-icon { background: var(--accent-coral-soft); color: var(--accent-coral); }
+    .channel-github .contact-channel-icon { background: #F3F4F6; color: #111827; }
+    .channel-linkedin .contact-channel-icon { background: #EFF6FF; color: #0077B5; }
+    .channel-instagram .contact-channel-icon { background: #FDF2F8; color: #E1306C; }
+
+    .contact-channel-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .contact-channel-info {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .channel-name {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-light);
+      font-weight: 700;
+    }
+
+    .channel-detail {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: var(--font-mono);
+    }
+
+    .contact-channel:hover {
+      border-color: var(--accent-coral);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -3px rgba(255, 90, 54, 0.15);
+    }
+
+    .contact-channel:hover .contact-channel-icon {
+      transform: scale(1.05);
+    }
+
+    .site-footer {
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.86rem;
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    @media (min-width: 640px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      }
+      .sidebar {
+        padding: 2.5rem 2rem;
+      }
+      .main-content {
+        padding: 3rem 2rem 5rem 2rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .app-layout {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .sidebar {
+        width: var(--sidebar-width);
+        min-width: var(--sidebar-width);
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+        border-right: 1px solid var(--border-subtle);
+        border-bottom: none;
+        padding: 3.5rem 2.25rem 2.5rem 2.5rem;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border-subtle) transparent;
+      }
+
+      .sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--border-subtle);
+        border-radius: var(--radius-full);
+      }
+
+      .sidebar-nav {
+        display: flex;
+      }
+
+      .main-content {
+        flex: 1;
+        max-width: calc(100% - var(--sidebar-width));
+        padding: 4rem 3.5rem 6rem 3.5rem;
+        gap: 5rem;
+      }
+
+      .section-title {
+        font-size: 2.15rem;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      :root {
+        --sidebar-width: 410px;
+      }
+      .main-content {
+        padding: 4.5rem 4.5rem 6rem 4.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+<aside class="sidebar">
+<div class="profile-header">
+<div class="avatar-wrapper">
+<div class="avatar-circle" title="Rafi Ullah">
+<img alt="Rafi Ullah" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="rafi.jpeg"/>
+<span style="display:none; width:100%; height:100%; align-items:center; justify-content:center;">RU</span>
+</div>
+<span class="status-badge" title="Open to opportunities &amp; collaborations"></span>
+</div>
+<div class="profile-titles">
+<h1 class="profile-name">
+            Rafi <span class="name-highlight">Ullah</span>
+</h1>
+<div class="profile-tagline">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="14">
+<polyline points="16 18 22 12 16 6"></polyline>
+<polyline points="8 6 2 12 8 18"></polyline>
+</svg>
+            Computer Science Student &amp; Developer
+          </div>
+</div>
+<p class="profile-bio">
+          Building resilient mobile apps, robust Blazor/.NET web applications, and exploratory AI tools. Driven by solid engineering principles, clean code, and solving real-world challenges.
+        </p>
+</div>
+<nav aria-label="Section Navigation" class="sidebar-nav">
+<a class="nav-link active" href="#about">
+<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          About Me
+        </a>
+<a class="nav-link" href="#skills">
+<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          Technical Skills
+        </a>
+<a class="nav-link" href="#projects">
+<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" ry="2" width="20" x="2" y="3"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg>
+          Featured Projects
+        </a>
+<a class="nav-link" href="#education">
+<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          Education
+        </a>
+<a class="nav-link" href="#contact">
+<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Get in Touch
+        </a>
+</nav>
+<div aria-label="Social Profiles" class="social-links">
+<a class="social-btn" href="mailto:rafiullahh2005@gmail.com" rel="noopener noreferrer" target="_blank" title="Email rafiullahh2005@gmail.com">
+<svg viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+</a>
+<a class="social-btn" href="https://github.com/rafiullah39" rel="noopener noreferrer" target="_blank" title="GitHub rafiullah39">
+<svg viewbox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+</a>
+<a class="social-btn" href="https://linkedin.com/in/rafi-ullah39" rel="noopener noreferrer" target="_blank" title="LinkedIn rafi-ullah39">
+<svg viewbox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
+</a>
+<a class="social-btn" href="https://instagram.com/rafi__39" rel="noopener noreferrer" target="_blank" title="Instagram rafi__39">
+<svg viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+<div class="sidebar-actions">
+<a class="btn-download" download="" href="resume.pdf" title="Download Rafi's Resume (PDF)">
+<svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+          Download Resume
+        </a>
+<span class="resume-note">PDF Format • Updated 2025</span>
+</div>
+<div class="badge-bar">
+<div class="info-item">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Swat, Khyber Pakhtunkhwa • Islamabad, PK
+        </div>
+<div class="info-item">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          Air University • BSCS 5th Semester
+        </div>
+</div>
+</aside>
+<main class="main-content">
+<section class="section-block" id="about">
+<div class="section-header">
+<span class="section-tag">01</span>
+<h2 class="section-title">About Me</h2>
+</div>
+<p class="about-lead">
+          I am <strong>Rafi (Rafi Ullah)</strong>, a passionate Computer Science undergraduate at <strong>Air University, Islamabad</strong>, currently in my 5th semester maintaining a <strong>CGPA of 3.13 / 4.0</strong>. Originally from the picturesque valley of <strong>Swat, Khyber Pakhtunkhwa</strong>, I combine rigorous academic foundations with relentless hands-on building.
+        </p>
+<p class="about-lead">
+          My development philosophy centers on architectural integrity and purposeful user experiences. Whether crafting cross-platform mobile apps in <strong>Flutter</strong>, architecting enterprise portals with <strong>Blazor Server and .NET</strong>, or diving deep into low-level systems and algorithms, I build software that is performant, maintainable, and meaningful.
+        </p>
+<div class="about-highlight-box">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="8" r="7"></circle>
+<polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+</svg>
+<div class="about-highlight-text">
+<strong>DevWeekends Full Stack AI Engineering Fellow:</strong> Completed an intensive mentorship fellowship honing real-world collaborative Git/GitHub workflows, full-stack JavaScript architectures, and hands-on integration of applied AI paradigms into modern applications.
+          </div>
+</div>
+<div class="about-metrics">
+<div class="metric-card">
+<div class="metric-val">5th Sem</div>
+<div class="metric-label">BS Computer Science at Air University</div>
+</div>
+<div class="metric-card">
+<div class="metric-val">3.13</div>
+<div class="metric-label">Cumulative GPA / 4.0 Scale</div>
+</div>
+<div class="metric-card">
+<div class="metric-val">5+ Systems</div>
+<div class="metric-label">End-to-end built across Web, Mobile &amp; Systems</div>
+</div>
+</div>
+</section>
+<section class="section-block" id="skills">
+<div class="section-header">
+<span class="section-tag">02</span>
+<h2 class="section-title">Technical Skills</h2>
+</div>
+<div class="skills-container">
+<div class="skill-group-card languages">
+<div class="skill-group-header">
+<div class="skill-group-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="16 18 22 12 16 6"></polyline>
+<polyline points="8 6 2 12 8 18"></polyline>
+</svg>
+</div>
+<h3 class="skill-group-title">Core Languages</h3>
+</div>
+<div class="skill-tags-grid">
+<div class="skill-chip"><span class="chip-dot"></span>Dart</div>
+<div class="skill-chip"><span class="chip-dot"></span>C# (.NET)</div>
+<div class="skill-chip"><span class="chip-dot"></span>Java</div>
+<div class="skill-chip"><span class="chip-dot"></span>C++</div>
+<div class="skill-chip"><span class="chip-dot"></span>SQL (Server &amp; Relational)</div>
+<div class="skill-chip"><span class="chip-dot"></span>JavaScript (ES6+)</div>
+<div class="skill-chip"><span class="chip-dot"></span>HTML5 / CSS3</div>
+<div class="skill-chip"><span class="chip-dot"></span>8086 Assembly</div>
+</div>
+</div>
+<div class="skill-group-card frameworks">
+<div class="skill-group-header">
+<div class="skill-group-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+<polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+<line x1="12" x2="12" y1="22.08" y2="12"></line>
+</svg>
+</div>
+<h3 class="skill-group-title">Frameworks, Libraries &amp; Tools</h3>
+</div>
+<div class="skill-tags-grid">
+<div class="skill-chip"><span class="chip-dot"></span>Flutter</div>
+<div class="skill-chip"><span class="chip-dot"></span>Firebase (Auth &amp; Firestore)</div>
+<div class="skill-chip"><span class="chip-dot"></span>Blazor Server</div>
+<div class="skill-chip"><span class="chip-dot"></span>.NET Framework &amp; Core</div>
+<div class="skill-chip"><span class="chip-dot"></span>Gemini AI API</div>
+<div class="skill-chip"><span class="chip-dot"></span>Git &amp; GitHub Workflows</div>
+<div class="skill-chip"><span class="chip-dot"></span>SOLID Principles</div>
+<div class="skill-chip"><span class="chip-dot"></span>RESTful APIs</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-block" id="projects">
+<div class="section-header">
+<span class="section-tag">03</span>
+<h2 class="section-title">Featured Projects</h2>
+</div>
+<div class="projects-grid">
+<article class="project-card">
+<div class="project-banner banner-daira">
+<div class="banner-pattern"></div>
+<div class="project-banner-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 2a10 10 0 1 0 10 10H12V2z"></path>
+<path d="M12 2a10 10 0 0 1 10 10h-10V2z" opacity="0.3"></path>
+<circle cx="12" cy="12" r="4"></circle>
+</svg>
+</div>
+<span class="project-badge-pill">Mobile • AI</span>
+</div>
+<div class="project-body">
+<div class="project-heading-row">
+<h3 class="project-name">DAIRA</h3>
+</div>
+<p class="project-desc">
+                A smart productivity mobile application built with Flutter and Firebase, featuring seamless Google Gemini AI integration for intelligent contextual assistance, goal tracking, and daily automation.
+              </p>
+<div class="project-tech-tags">
+<span class="tech-tag">Flutter</span>
+<span class="tech-tag">Firebase</span>
+<span class="tech-tag">Gemini AI</span>
+<span class="tech-tag">Dart</span>
+</div>
+<div class="project-footer">
+<a class="btn-github" href="https://github.com/rafiullah39" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+                  View on GitHub →
+                </a>
+</div>
+</div>
+</article>
+<article class="project-card">
+<div class="project-banner banner-educonnect">
+<div class="banner-pattern"></div>
+<div class="project-banner-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+</svg>
+</div>
+<span class="project-badge-pill">Web Portal • SOLID</span>
+</div>
+<div class="project-body">
+<div class="project-heading-row">
+<h3 class="project-name">EduConnect</h3>
+</div>
+<p class="project-desc">
+                An extensible education management portal crafted in Blazor Server adhering strictly to SOLID design principles, including executing a comprehensive .NET framework compatibility migration.
+              </p>
+<div class="project-tech-tags">
+<span class="tech-tag">Blazor Server</span>
+<span class="tech-tag">.NET</span>
+<span class="tech-tag">C#</span>
+<span class="tech-tag">SOLID Architecture</span>
+</div>
+<div class="project-footer">
+<a class="btn-github" href="https://github.com/rafiullah39" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+                  View on GitHub →
+                </a>
+</div>
+</div>
+</article>
+<article class="project-card">
+<div class="project-banner banner-crm">
+<div class="banner-pattern"></div>
+<div class="project-banner-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+</svg>
+</div>
+<span class="project-badge-pill">Enterprise • CRM</span>
+</div>
+<div class="project-body">
+<div class="project-heading-row">
+<h3 class="project-name">ClientFlow-CRM</h3>
+</div>
+<p class="project-desc">
+                A modern client relationship management platform engineered with Blazor to track customer pipelines, organize sales communications, and manage multi-stage deal lifecycles efficiently.
+              </p>
+<div class="project-tech-tags">
+<span class="tech-tag">Blazor</span>
+<span class="tech-tag">C#</span>
+<span class="tech-tag">.NET Core</span>
+<span class="tech-tag">SQL</span>
+</div>
+<div class="project-footer">
+<a class="btn-github" href="https://github.com/rafiullah39" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+                  View on GitHub →
+                </a>
+</div>
+</div>
+</article>
+<article class="project-card">
+<div class="project-banner banner-bloodbank">
+<div class="banner-pattern"></div>
+<div class="project-banner-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+</svg>
+</div>
+<span class="project-badge-pill">Desktop App • SQL</span>
+</div>
+<div class="project-body">
+<div class="project-heading-row">
+<h3 class="project-name">Blood Bank Management System</h3>
+</div>
+<p class="project-desc">
+                A reliable Java and SQL Server desktop management system orchestrating donor registries, blood component inventories, recipient dispatch requests, and vital audit tracking.
+              </p>
+<div class="project-tech-tags">
+<span class="tech-tag">Java</span>
+<span class="tech-tag">SQL Server</span>
+<span class="tech-tag">Swing / UI</span>
+<span class="tech-tag">Relational DB</span>
+</div>
+<div class="project-footer">
+<a class="btn-github" href="https://github.com/rafiullah39" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+                  View on GitHub →
+                </a>
+</div>
+</div>
+</article>
+<article class="project-card">
+<div class="project-banner banner-evm">
+<div class="banner-pattern"></div>
+<div class="project-banner-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<rect height="16" rx="2" width="16" x="4" y="4"></rect>
+<rect height="6" width="6" x="9" y="9"></rect>
+<line x1="9" x2="9" y1="1" y2="4"></line>
+<line x1="15" x2="15" y1="1" y2="4"></line>
+<line x1="9" x2="9" y1="20" y2="23"></line>
+<line x1="15" x2="15" y1="20" y2="23"></line>
+<line x1="20" x2="23" y1="9" y2="9"></line>
+<line x1="20" x2="23" y1="14" y2="14"></line>
+<line x1="1" x2="4" y1="9" y2="9"></line>
+<line x1="1" x2="4" y1="14" y2="14"></line>
+</svg>
+</div>
+<span class="project-badge-pill">Systems • 8086 Assembly</span>
+</div>
+<div class="project-body">
+<div class="project-heading-row">
+<h3 class="project-name">Electronic Voting Machine (EVM)</h3>
+</div>
+<p class="project-desc">
+                A collaborative low-level 8086 microprocessor assembly project where Rafi authored fundamental utility procedures including string printing, raw character I/O, string comparison, and secure candidate vote displays.
+              </p>
+<div class="project-tech-tags">
+<span class="tech-tag">8086 Assembly</span>
+<span class="tech-tag">Low-Level Systems</span>
+<span class="tech-tag">Computer Architecture</span>
+</div>
+<div class="project-footer">
+<a class="btn-github" href="https://github.com/rafiullah39" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+                  View on GitHub →
+                </a>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section class="section-block" id="education">
+<div class="section-header">
+<span class="section-tag">04</span>
+<h2 class="section-title">Education</h2>
+</div>
+<div class="education-card">
+<div class="edu-header">
+<div class="edu-institution">
+              Air University, Islamabad
+              <span class="edu-location-badge">Islamabad, Pakistan</span>
+</div>
+<div class="edu-degree">
+              Bachelor of Science in Computer Science (BSCS)
+            </div>
+</div>
+<div class="edu-stats-grid">
+<div class="edu-stat">
+<span class="edu-stat-label">Current Progress</span>
+<span class="edu-stat-value">5th Semester</span>
+</div>
+<div class="edu-stat">
+<span class="edu-stat-label">Academic Standing</span>
+<span class="edu-stat-value edu-cgpa-pill">
+                3.13 / 4.00 CGPA
+              </span>
+</div>
+<div class="edu-stat">
+<span class="edu-stat-label">Key Focus</span>
+<span class="edu-stat-value" style="font-size: 1rem; font-weight: 600;">Data Structures • Software Eng. • OOP</span>
+</div>
+</div>
+</div>
+</section>
+<section class="section-block" id="contact">
+<div class="section-header">
+<span class="section-tag">05</span>
+<h2 class="section-title">Get in Touch</h2>
+</div>
+<div class="contact-card">
+<p class="contact-invitation">
+            I am always eager to discuss software engineering opportunities, collaborative builds, internship roles, or technical ideas. Feel free to reach out directly through any of the channels below:
+          </p>
+<div class="contact-links-grid">
+<a class="contact-channel channel-email" href="mailto:rafiullahh2005@gmail.com" rel="noopener noreferrer" target="_blank">
+<div class="contact-channel-icon">
+<svg viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+</div>
+<div class="contact-channel-info">
+<span class="channel-name">Direct Email</span>
+<span class="channel-detail" title="rafiullahh2005@gmail.com">rafiullahh2005@gmail.com</span>
+</div>
+</a>
+<a class="contact-channel channel-github" href="https://github.com/rafiullah39" rel="noopener noreferrer" target="_blank">
+<div class="contact-channel-icon">
+<svg viewbox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+</div>
+<div class="contact-channel-info">
+<span class="channel-name">GitHub</span>
+<span class="channel-detail">@rafiullah39</span>
+</div>
+</a>
+<a class="contact-channel channel-linkedin" href="https://linkedin.com/in/rafi-ullah39" rel="noopener noreferrer" target="_blank">
+<div class="contact-channel-icon">
+<svg viewbox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
+</div>
+<div class="contact-channel-info">
+<span class="channel-name">LinkedIn</span>
+<span class="channel-detail">rafi-ullah39</span>
+</div>
+</a>
+<a class="contact-channel channel-instagram" href="https://instagram.com/rafi__39" rel="noopener noreferrer" target="_blank">
+<div class="contact-channel-icon">
+<svg viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</div>
+<div class="contact-channel-info">
+<span class="channel-name">Instagram</span>
+<span class="channel-detail">@rafi__39</span>
+</div>
+</a>
+</div>
+</div>
+<footer class="site-footer">
+<p>© <span id="year"></span> Rafi Ullah • Designed &amp; Crafted with HTML &amp; CSS</p>
+</footer>
+</section>
+</main>
+</div>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.pageYOffset;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
