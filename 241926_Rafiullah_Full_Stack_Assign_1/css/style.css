@@ -1,0 +1,138 @@
+/* Rafi Ullah */
+/* Reg No: 241926 */
+
+
+
+/* ---------- fonts (saved inside the project so it works offline) ---------- */
+@font-face { font-family: 'Plus Jakarta Sans'; font-weight: 400; src: url('../fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-weight: 600; src: url('../fonts/plus-jakarta-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-weight: 700; src: url('../fonts/plus-jakarta-sans-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-weight: 800; src: url('../fonts/plus-jakarta-sans-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Dancing Script'; font-weight: 700; src: url('../fonts/dancing-script-latin-700-normal.woff2') format('woff2'); }
+
+/* ---------- colours (Royal Ember palette) ---------- */
+:root {
+  --g1: #068562;
+  --g2: #013F4A;
+  --mint: #e6f5f0;
+  --ink: #0b2a2f;
+  --grad: linear-gradient(135deg, #068562, #013F4A);
+  --grad-soft: linear-gradient(135deg, #e6f5f0, #d3ece8);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 0% 0%, #dff3ec 0, transparent 40%),
+              radial-gradient(circle at 100% 100%, #d5e9ec 0, transparent 40%), #f3f8f7;
+  background-attachment: fixed;
+}
+
+/* ---------- brand name in calligraphy ---------- */
+.brand {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  line-height: 1.1;
+  padding-bottom: 4px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand-lg { font-size: 3rem; }
+.brand-md { font-size: 1.8rem; }
+.brand-white { background: none; color: #fff; }
+.logo-box { width: 38px; height: 38px; border-radius: 12px; background: var(--grad); color: #fff;
+            display: inline-flex; align-items: center; justify-content: center; font-weight: 800; }
+
+/* ---------- buttons ---------- */
+.btn-grad { background: var(--grad); color: #fff; border: 0; box-shadow: 0 8px 18px -8px rgba(1, 63, 74, .8); }
+.btn-grad:hover, .btn-grad:active, .btn-grad:focus { background: linear-gradient(135deg, #07966f, #025565); color: #fff; }
+.btn-grad:disabled { background: var(--grad); color: #fff; opacity: .6; }
+.text-grad { color: var(--g1); }
+.text-deep { color: var(--g2); }
+
+/* ---------- cards ---------- */
+.card-soft { background: #fff; border: 1px solid rgba(1, 63, 74, .07); border-radius: 1.25rem;
+             box-shadow: 0 6px 24px -12px rgba(1, 63, 74, .25); animation: rise .5s ease both; }
+.card-soft.hoverable { transition: transform .2s, box-shadow .2s; }
+.card-soft.hoverable:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -12px rgba(1, 63, 74, .35); }
+.card-tint { background: var(--grad-soft); border-radius: 1rem; }
+.card-hero { background: var(--grad); color: #fff; border-radius: 1.5rem; position: relative; overflow: hidden;
+             box-shadow: 0 18px 40px -18px rgba(1, 63, 74, .9); animation: rise .5s ease both; }
+.card-hero::after { content: ''; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px;
+                    border-radius: 50%; background: rgba(255, 255, 255, .08); }
+.top-strip { height: 8px; background: var(--grad); border-radius: 1rem 1rem 0 0; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ---------- navigation ---------- */
+.navbar-cf { background: rgba(255, 255, 255, .85); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(1, 63, 74, .08); }
+.pill-nav { background: #eef3f3; border-radius: 999px; padding: 4px; display: inline-flex; gap: 2px; }
+.pill-nav a { color: #4b6468; font-weight: 600; font-size: .85rem; padding: 7px 18px; border-radius: 999px; text-decoration: none; }
+.pill-nav a:hover { color: var(--g2); }
+.pill-nav a.active { background: var(--grad); color: #fff; box-shadow: 0 6px 14px -6px rgba(1, 63, 74, .8); }
+
+/* ---------- login page ---------- */
+.login-bg { background: linear-gradient(160deg, #068562 0%, #02535a 45%, #013F4A 100%); min-height: 100vh; position: relative; overflow: hidden; }
+.login-bg::before, .login-bg::after { content: ''; position: absolute; border-radius: 50%; background: rgba(255, 255, 255, .06); }
+.login-bg::before { width: 520px; height: 520px; left: -160px; top: -160px; }
+.login-bg::after { width: 420px; height: 420px; right: -120px; bottom: -140px; }
+.login-card { background: rgba(255, 255, 255, .96); border-radius: 2rem; box-shadow: 0 30px 70px -20px rgba(0, 0, 0, .55);
+              position: relative; z-index: 1; overflow: hidden; animation: rise .6s ease both; }
+.icon-box { width: 38px; height: 38px; border-radius: 10px; color: #fff; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ib-1 { background: #068562; } .ib-2 { background: #d97706; } .ib-3 { background: #013F4A; } .ib-4 { background: #7c3aed; }
+
+/* ---------- form fields ---------- */
+.input-soft { background: #f1f6f6; border: 1px solid transparent; border-radius: .9rem; padding: .75rem 1rem; }
+.input-soft:focus { background: #fff; border-color: var(--g1); box-shadow: 0 0 0 .2rem rgba(6, 133, 98, .15); }
+.input-group .input-soft { border-radius: .9rem; }
+
+/* ---------- pictures ---------- */
+.avatar { border-radius: 50%; object-fit: cover; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+          color: #fff; font-weight: 700; background-size: cover; background-position: center; }
+.avatar-sq { border-radius: 24%; border: 3px solid #fff; box-shadow: 0 0 0 3px var(--g1); }
+.avatar-wrap { position: relative; display: inline-block; flex-shrink: 0; }
+.dot { position: absolute; right: 0; bottom: 0; width: 13px; height: 13px; border-radius: 50%; border: 2px solid #fff; }
+.dot-on { background: #10b981; } .dot-off { background: #cbd5d5; }
+.stack .avatar { margin-left: -10px; border: 2px solid #fff; }
+.stack .avatar:first-child { margin-left: 0; }
+
+/* ---------- small labels ---------- */
+.chip { display: inline-block; background: var(--mint); color: var(--g2); border-radius: 999px; padding: 3px 12px; font-size: .72rem; font-weight: 700; }
+.chip-warm { background: #fef3c7; color: #92400e; }
+.chip-rose { background: #ffe4e6; color: #9f1239; }
+.stat { border-radius: 1rem; text-align: center; padding: 14px 20px; background: #f1f6f6; min-width: 92px; }
+.stat b { display: block; font-size: 1.6rem; line-height: 1.1; }
+
+/* ---------- friend rating buttons (1 Stupid, 2 Cool, 3 Trustworthy) ---------- */
+.rate-pill { border: 0; background: #fff; border-radius: 999px; padding: 4px 11px; font-size: .78rem; font-weight: 600; color: #4b6468;
+             box-shadow: 0 1px 3px rgba(0, 0, 0, .12); margin-right: 4px; transition: transform .15s; }
+.rate-pill:hover { transform: translateY(-2px) scale(1.06); }
+.rate-pill.on-1 { background: linear-gradient(135deg, #fb7185, #be123c); color: #fff; }
+.rate-pill.on-2 { background: linear-gradient(135deg, #fbbf24, #b45309); color: #fff; }
+.rate-pill.on-3 { background: var(--grad); color: #fff; }
+.rate-box { background: #f1f6f6; border-radius: .9rem; padding: 6px 10px; }
+
+/* ---------- like / dislike ---------- */
+.react-btn { border: 0; background: #f1f6f6; border-radius: 999px; padding: 5px 14px; font-weight: 600; font-size: .85rem; color: #4b6468; }
+.react-btn:hover { background: #e2eeec; }
+.react-btn.like-on { background: var(--grad); color: #fff; }
+.react-btn.dislike-on { background: linear-gradient(135deg, #fb7185, #be123c); color: #fff; }
+
+/* ---------- chat ---------- */
+.chat-box { height: 440px; overflow-y: auto; background: #f7fbfa; }
+.bubble-me { background: var(--grad); color: #fff; border-radius: 1.2rem 1.2rem .3rem 1.2rem; max-width: 75%; box-shadow: 0 8px 16px -10px rgba(1, 63, 74, .8); }
+.bubble-them { background: #fff; border-radius: 1.2rem 1.2rem 1.2rem .3rem; max-width: 75%; box-shadow: 0 2px 8px rgba(1, 63, 74, .08); }
+.day-chip { background: #e6eeee; color: #4b6468; font-size: .7rem; border-radius: 999px; padding: 2px 14px; }
+.convo { border: 0; border-left: 4px solid transparent; background: transparent; text-align: left; width: 100%; padding: 12px; border-radius: .6rem; }
+.convo:hover { background: #f1f6f6; }
+.convo.active { background: #e9f4f1; border-left-color: var(--g1); }
+.toggle-box { background: #eef3f3; border-radius: 999px; padding: 4px; display: flex; gap: 4px; }
+.toggle-box button { flex: 1; border: 0; background: transparent; border-radius: 999px; padding: 7px; font-size: .8rem; font-weight: 700; color: #4b6468; }
+.toggle-box button.active { background: var(--grad); color: #fff; }
+.scroll-list { max-height: 480px; overflow-y: auto; }
+
+/* ---------- ignore list warning ---------- */
+.ignore-box { background: #fff1f2; border: 1px solid #fecdd3; color: #9f1239; border-radius: .9rem; padding: 12px; }
+.ok-box { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; border-radius: .9rem; padding: 12px; }
+.warn-box { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; border-radius: .9rem; padding: 12px; }

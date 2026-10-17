@@ -1,0 +1,108 @@
+<!-- Rafi Ullah -->
+<!-- Reg No: 241926 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="lib/bootstrap.min.css" rel="stylesheet">
+  <link href="lib/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <title>Home | ConnecFriend</title>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main class="container-xl py-4">
+
+    <!-- welcome card -->
+    <div class="card-hero p-4 p-md-5 mb-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 position-relative" style="z-index:1">
+        <div>
+          <div class="brand brand-white" style="font-size:2.4rem">Welcome back, <span id="welcomeName"></span></div>
+          <div class="opacity-75">Here is what your friends are sharing today.</div>
+        </div>
+        <div class="d-flex gap-2">
+          <div class="rounded-4 px-3 py-2 text-center" style="background:rgba(255,255,255,.14)"><b class="fs-4 d-block" id="friendCount">0</b><span class="small">Friends</span></div>
+          <div class="rounded-4 px-3 py-2 text-center" style="background:rgba(255,255,255,.14)"><b class="fs-4 d-block" id="activeCount">0</b><span class="small">Active now</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- LEFT: friends sorted by login -->
+      <aside class="col-lg-3 order-2 order-lg-1">
+        <div class="card-soft p-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="fw-bold mb-0">Friends</h6>
+            <span class="chip">Latest login first</span>
+          </div>
+          <div class="my-3 border-top"></div>
+          <div id="friendList" class="scroll-list"></div>
+        </div>
+      </aside>
+
+      <!-- CENTER: share box + news feed -->
+      <section class="col-lg-6 order-1 order-lg-2">
+        <div class="card-soft p-3 mb-4">
+          <div class="d-flex gap-3">
+            <div id="meAvatar"></div>
+            <textarea id="postText" class="form-control input-soft" rows="3" maxlength="300" placeholder="Share news, updates or stories with your friends..."></textarea>
+          </div>
+
+          <div id="pickBox" class="d-none mt-3 p-3 card-tint">
+            <div class="small fw-semibold mb-2">Choose which friends can see this post:</div>
+            <div id="pickList" class="row row-cols-2 g-2"></div>
+          </div>
+
+          <div id="postError" class="text-danger small mt-2 d-none"></div>
+
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-3">
+            <select id="audience" class="form-select form-select-sm rounded-pill w-auto border-0 bg-light fw-semibold">
+              <option value="all">🌐 Share with all friends</option>
+              <option value="some">👥 Share with some friends</option>
+            </select>
+            <span class="small text-secondary"><span id="charCount">0</span>/300</span>
+            <button type="button" class="btn btn-grad rounded-pill px-4 fw-semibold" onclick="addPost()">Post Update <i class="bi bi-send"></i></button>
+          </div>
+        </div>
+
+        <div id="feed"></div>
+      </section>
+
+      <!-- RIGHT: invite + rating guide -->
+      <aside class="col-lg-3 order-3">
+        <div class="card-soft p-3 mb-4">
+          <h6 class="fw-bold mb-1">Invite Friend</h6>
+          <div class="small text-secondary mb-3">Connect with someone new to share updates.</div>
+          <input type="text" id="inviteName" class="form-control input-soft mb-2" placeholder="@username">
+          <button class="btn btn-grad w-100 rounded-3 fw-semibold" type="button" onclick="inviteFromBox()"><i class="bi bi-send"></i> Send Friend Request</button>
+          <div id="inviteResult" class="mt-3 small d-none"></div>
+
+          <div class="my-3 border-top"></div>
+          <div class="fw-semibold small mb-2">Pending invites (<span id="pendingCount">0</span>)</div>
+          <div id="pendingList"></div>
+          <div id="sentList" class="small text-secondary mt-2"></div>
+        </div>
+
+        <div class="card-soft p-3 mb-4">
+          <h6 class="fw-bold">Rating Guide</h6>
+          <div class="d-flex align-items-center gap-2 mb-2 small"><span class="fs-4">🤪</span><div><b>1 · Stupid</b><br><span class="text-secondary">Playful, silly banter</span></div></div>
+          <div class="d-flex align-items-center gap-2 mb-2 small"><span class="fs-4">😎</span><div><b>2 · Cool</b><br><span class="text-secondary">Stylish and inspiring</span></div></div>
+          <div class="d-flex align-items-center gap-2 small"><span class="fs-4">🤝</span><div><b>3 · Trustworthy</b><br><span class="text-secondary">Loyal and reliable</span></div></div>
+        </div>
+
+        <div class="card-soft p-3">
+          <h6 class="fw-bold">People you may know</h6>
+          <div id="suggestList"></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="lib/bootstrap.bundle.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
