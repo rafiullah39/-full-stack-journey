@@ -1,0 +1,12 @@
+{
+  "name": "rafis-collection-api",
+  "version": "1.0.0",
+  "description": "REST API with persistent storage for Rafi's Collection e-commerce store",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

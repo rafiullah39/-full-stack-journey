@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rafi's Collection | Bespoke & Heritage Menswear</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#14213d; --rust:#a63d1f; --gold:#c9a24d;
+  --paint-img:none;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif; color:#2b2b2b;
+  background-color:#fff7f3;
+  background-image:var(--paint-img),
+    radial-gradient(circle at 8% 10%, rgba(74,144,226,.35), transparent 35%),
+    radial-gradient(circle at 92% 8%, rgba(236,72,153,.30), transparent 35%),
+    radial-gradient(circle at 15% 45%, rgba(147,51,234,.25), transparent 35%),
+    radial-gradient(circle at 88% 42%, rgba(251,146,60,.35), transparent 35%),
+    radial-gradient(circle at 10% 80%, rgba(45,212,191,.30), transparent 35%),
+    radial-gradient(circle at 90% 85%, rgba(250,204,21,.35), transparent 35%);
+  background-attachment:fixed; background-size:cover;
+}
+h1,h2,h3,.brand{font-family:'Playfair Display',serif}
+
+.navbar{background:rgba(255,255,255,.85);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,.05)}
+.brand{color:var(--navy)!important;font-weight:700;font-size:1.4rem}
+.brand small{display:block;font-family:'Inter';font-size:.6rem;letter-spacing:.2em;color:var(--rust)}
+.nav-link{font-size:.85rem;letter-spacing:.04em;color:var(--navy)!important}
+.btn-navy{background:var(--navy);color:#fff;border:0;padding:.8rem 1.8rem;border-radius:.4rem}
+.btn-navy:hover{background:#0b1426;color:#fff}
+.btn-rust{background:var(--rust);color:#fff;border:0}
+.btn-rust:hover{background:#862e15;color:#fff}
+section{padding:5rem 0}
+.section-tag{font-size:.7rem;letter-spacing:.25em;color:var(--rust);text-transform:uppercase}
+.glass{background:rgba(255,255,255,.88);border-radius:1rem;box-shadow:0 10px 40px rgba(0,0,0,.07)}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:6rem}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 14s ease-in-out infinite alternate;z-index:0}
+.b1{width:340px;height:340px;background:#4a90e2;top:5%;left:-5%}
+.b2{width:300px;height:300px;background:#ec4899;top:50%;right:30%;animation-delay:-4s}
+.b3{width:360px;height:360px;background:#fb923c;bottom:-8%;right:-4%;animation-delay:-8s}
+.b4{width:260px;height:260px;background:#2dd4bf;bottom:5%;left:20%;animation-delay:-2s}
+@keyframes drift{to{transform:translate(60px,-40px) scale(1.15)}}
+.hero .container{position:relative;z-index:2}
+.hero h1{font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.05;color:var(--navy)}
+.hero h1 em{color:var(--rust)}
+.reveal{display:block;overflow:hidden}
+.reveal span{display:inline-block;transform:translateY(110%);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+.reveal:nth-child(2) span{animation-delay:.25s}
+@keyframes up{to{transform:none}}
+.fade{opacity:0;animation:fade 1s .7s forwards}
+.fade2{animation-delay:1s}
+@keyframes fade{to{opacity:1}}
+.arch{position:relative;width:min(380px,85%);margin:auto}
+.arch.fade{animation:fade 1s .7s forwards, float 6s 1.7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-16px)}}
+.arch .frame{
+  position:relative;
+  border-radius:200px 200px 1rem 1rem;overflow:hidden;
+  aspect-ratio:3/4;border:8px solid #fff;box-shadow:0 30px 60px rgba(20,33,61,.25);
+  background:linear-gradient(135deg,#4a90e2,#ec4899);
+}
+.arch .frame img,.arch .frame .ph{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:top center;display:block;
+}
+.seal{position:absolute;bottom:-30px;left:-45px;width:120px;height:120px;background:#fff;border-radius:50%;box-shadow:0 8px 25px rgba(0,0,0,.15);display:grid;place-items:center}
+.seal svg{position:absolute;width:100%;height:100%;animation:spin 16s linear infinite}
+.seal i{font-size:1.6rem;color:var(--rust)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.trust span{font-size:.75rem;background:rgba(255,255,255,.85);padding:.5rem .9rem;border-radius:2rem}
+.ph{display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;font-family:'Playfair Display';padding:1rem;
+  background:linear-gradient(135deg,var(--c1,#4a90e2),var(--c2,#ec4899))}
+
+.col-card{position:relative;border-radius:1rem;overflow:hidden;aspect-ratio:3/4;cursor:pointer;transition:.4s}
+.col-card img,.col-card .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.col-card:hover{transform:translateY(-6px)}
+.col-card .ov{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,15,30,.85));display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;color:#fff}
+
+.pcard{border:0;border-radius:1rem;overflow:hidden;transition:.3s;height:100%}
+.pcard:hover{transform:translateY(-6px)}
+.pimg{position:relative;aspect-ratio:3/4;overflow:hidden;background:#eee}
+.pimg img,.pimg .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:.5s}
+.pcard:hover .pimg img{transform:scale(1.06)}
+.badge-tag{position:absolute;top:12px;left:12px;background:var(--navy);color:#fff;font-size:.65rem;letter-spacing:.1em;padding:.3rem .6rem;border-radius:.3rem;z-index:2}
+.stars{color:var(--gold);font-size:.8rem}
+.size-btn{border:1px solid #ccc;background:#fff;border-radius:.3rem;font-size:.75rem;width:34px;height:30px}
+.size-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.filter-btn{border:1px solid var(--navy);background:transparent;color:var(--navy);font-size:.75rem;padding:.4rem 1rem;border-radius:.3rem}
+.filter-btn.active{background:var(--navy);color:#fff}
+
+.cart-item img,.cart-item .ph{width:70px;height:88px;border-radius:.5rem;object-fit:cover;object-position:top center;font-size:.6rem;flex-shrink:0}
+footer{background:var(--navy);color:#cfd6e6;padding:3rem 0 1.5rem}
+footer a{color:#cfd6e6;text-decoration:none;font-size:.85rem}
+
+.rc-modal .modal-content{border:0;border-radius:1.4rem;overflow:hidden;box-shadow:0 40px 90px rgba(20,33,61,.35)}
+.auth-art{
+  position:relative;min-height:100%;padding:2.5rem;color:#fff;display:flex;flex-direction:column;justify-content:space-between;
+  background:
+    radial-gradient(circle at 15% 15%, #4a90e2 0, transparent 45%),
+    radial-gradient(circle at 90% 20%, #ec4899 0, transparent 45%),
+    radial-gradient(circle at 20% 85%, #2dd4bf 0, transparent 45%),
+    radial-gradient(circle at 85% 85%, #fb923c 0, transparent 45%),
+    #14213d;
+}
+.auth-art::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(20,33,61,.15),rgba(20,33,61,.7))}
+.auth-art>*{position:relative;z-index:2}
+.auth-art h3{font-size:2rem;line-height:1.15}
+.auth-art h3 em{color:#ffd9a0}
+.auth-art ul{list-style:none;padding:0;margin:0}
+.auth-art li{font-size:.85rem;margin-bottom:.6rem;opacity:.92}
+.auth-art li i{margin-right:.5rem;color:#ffd9a0}
+.auth-form{padding:2.5rem 2.4rem;position:relative}
+.auth-close{position:absolute;top:1rem;right:1rem;z-index:5}
+.auth-form h4{font-family:'Playfair Display',serif;color:var(--navy);font-weight:700}
+.field{margin-bottom:1rem}
+.field label{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#5b6172;margin-bottom:.35rem;display:block}
+.field .wrap{position:relative}
+.field .wrap>i.lead-i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#8a8fa0;font-size:1rem;pointer-events:none}
+.field textarea~i.lead-i{top:20px;transform:none}
+.field input,.field textarea,.field select{
+  width:100%;padding:.8rem 1rem .8rem 2.6rem;border-radius:.75rem;border:1.5px solid #e4e6ee;background:#fafbfd;font-size:.92rem;transition:.2s;outline:0}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--navy);background:#fff;box-shadow:0 0 0 4px rgba(20,33,61,.08)}
+.field .eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:none;color:#8a8fa0;padding:.4rem}
+.field .eye:hover{color:var(--navy)}
+.strength{height:4px;border-radius:4px;background:#e9ebf2;overflow:hidden;margin-top:.5rem}
+.strength div{height:100%;width:0;transition:.3s}
+.btn-main{width:100%;padding:.9rem;border:0;border-radius:.75rem;background:linear-gradient(135deg,var(--navy),#22366b);color:#fff;font-weight:600;letter-spacing:.03em;transition:.25s}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(20,33,61,.3);color:#fff}
+.btn-main:disabled{opacity:.6;transform:none;box-shadow:none}
+.btn-ghost{padding:.9rem 1.4rem;border:1.5px solid #d8dbe6;border-radius:.75rem;background:#fff;color:var(--navy);font-weight:600}
+.btn-ghost:hover{border-color:var(--navy)}
+.err{background:#fdecea;color:#b3261e;border-radius:.7rem;padding:.6rem .9rem;font-size:.82rem;margin-bottom:1rem;display:none}
+.err.show{display:block}
+.link-btn{background:none;border:0;padding:0;color:var(--rust);font-weight:600}
+
+.co-head{background:linear-gradient(135deg,#14213d,#22366b);color:#fff;padding:1.4rem 2rem;position:relative}
+.co-head .btn-close{position:absolute;top:1.2rem;right:1.2rem;filter:invert(1)}
+.steps{display:flex;align-items:center;gap:.6rem;margin-top:1rem;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:.5rem;font-size:.8rem;opacity:.55}
+.step .dot{width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);display:grid;place-items:center;font-size:.72rem;font-weight:600}
+.step.active,.step.done{opacity:1}
+.step.active .dot{background:#fff;color:var(--navy)}
+.step.done .dot{background:#2dd4bf;border-color:#2dd4bf;color:#fff}
+.step-line{width:34px;height:1px;background:rgba(255,255,255,.4)}
+.co-body{padding:2rem}
+.co-side{background:#f6f7fb;padding:2rem;height:100%}
+.sum-item{display:flex;gap:.8rem;margin-bottom:1rem;align-items:center}
+.sum-item img,.sum-item .ph{width:54px;height:68px;border-radius:.6rem;object-fit:cover;object-position:top center;font-size:0;padding:0;flex-shrink:0}
+.sum-item .qty{font-size:.72rem;color:#7b8194}
+.pay-opt{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;border:1.5px solid #e4e6ee;border-radius:.9rem;cursor:pointer;margin-bottom:.8rem;transition:.2s;background:#fff}
+.pay-opt:hover{border-color:#b9bfd3}
+.pay-opt.active{border-color:var(--navy);box-shadow:0 0 0 4px rgba(20,33,61,.07)}
+.pay-opt input{display:none}
+.pay-opt .ic{width:44px;height:44px;border-radius:.7rem;background:#eef1f8;display:grid;place-items:center;font-size:1.3rem;color:var(--navy)}
+.pay-opt .tick{margin-left:auto;color:#d0d4e0;font-size:1.3rem}
+.pay-opt.active .tick{color:var(--navy)}
+.pay-opt.active .tick::before{content:"\F26A"}
+.review-box{border:1.5px solid #e4e6ee;border-radius:.9rem;padding:1rem 1.2rem;margin-bottom:1rem;font-size:.9rem}
+.review-box h6{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#7b8194;display:flex;justify-content:space-between}
+.success-ring{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#2dd4bf,#4a90e2);display:grid;place-items:center;margin:0 auto 1rem;color:#fff;font-size:2.6rem;animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(0)}}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand brand" href="#home">Rafi's Collection<small>BESPOKE & HERITAGE MENSWEAR</small></a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
+        <li class="nav-item"><a class="nav-link" href="#collections">COLLECTIONS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#products">SHOP</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews">REVIEWS</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2">
+        <div id="authArea"></div>
+        <button class="btn btn-outline-dark position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">
+          <i class="bi bi-bag"></i>
+          <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <p class="section-tag fade">Spring Festive & Heirloom 2026</p>
+        <h1><span class="reveal"><span>Timeless Heritage.</span></span>
+            <span class="reveal"><span><em>Master Tailoring.</em></span></span></h1>
+        <p class="lead mt-4 fade fade2" style="max-width:480px">Handcrafted Shalwar Kameez, Waistcoats and Vintage Shirts, tailored from pashmina, Egyptian cotton and raw banarsi silk.</p>
+        <div class="mt-4 fade fade2">
+          <a href="#products" class="btn btn-navy me-2">Explore Collection</a>
+          <a href="#collections" class="btn btn-outline-dark">View Heritage</a>
+        </div>
+        <div class="trust d-flex flex-wrap gap-2 mt-4 fade fade2">
+          <span><i class="bi bi-scissors"></i> Made-to-measure</span>
+          <span><i class="bi bi-globe2"></i> Worldwide delivery</span>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="arch fade">
+          <div class="frame" id="heroFrame"></div>
+          <div class="seal">
+            <svg viewBox="0 0 120 120"><defs><path id="c" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+              <text font-size="10" letter-spacing="3" fill="#14213d"><textPath href="#c">HAND-STITCHED • HEIRLOOM • BESPOKE •</textPath></text></svg>
+            <i class="bi bi-stars"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="collections">
+  <div class="container">
+    <p class="section-tag">The Atelier Archives</p>
+    <h2 class="mb-4">Curated Heritage Collections</h2>
+    <div class="row g-4" id="collectionRow"></div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+      <div><p class="section-tag mb-1">Ready-to-wear & Made-to-measure</p><h2 class="mb-0">Atelier Masterpieces</h2></div>
+      <div id="filters" class="d-flex flex-wrap gap-2"></div>
+    </div>
+    <div class="row g-4" id="productRow"></div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="section-tag">4.9 / 5.0 aggregate rating</p>
+      <h2>Voices of Sovereign Distinction</h2>
+      <p class="text-muted">Cherished by over 3,400+ discerning patrons across Lahore, London, New York and Dubai.</p>
+      <button class="btn btn-navy mt-2" onclick="openReview()"><i class="bi bi-pencil-square me-1"></i>Write a review</button>
+    </div>
+    <div class="row g-4" id="reviewRow"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4"><h5 class="brand text-white">Rafi's Collection</h5><p class="small">Artisanal heritage menswear crafted by master craftsmen, hand-stitched with timeless masculine distinction.</p></div>
+      <div class="col-md-4"><h6 class="text-white">Atelier Services</h6><div class="d-grid gap-1"><a href="#">Book Bespoke Appointment</a><a href="#">Measurement Guide</a><a href="#">Worldwide Courier Tracking</a></div></div>
+      <div class="col-md-4"><h6 class="text-white">Customer Care</h6><div class="d-grid gap-1"><a href="#">Concierge Support</a><a href="#">Shipping & Duties</a><a href="#">FAQ</a></div></div>
+    </div>
+    <hr class="border-secondary mt-4"><p class="small text-center mb-0">© 2026 Rafi's Collection. Crafted for royalty.</p>
+  </div>
+</footer>
+
+<div class="offcanvas offcanvas-end" id="cartCanvas" style="width:400px">
+  <div class="offcanvas-header"><h5 class="offcanvas-title brand">Your Cart</h5><button class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+  <div class="offcanvas-body d-flex flex-column">
+    <div id="cartItems" class="flex-grow-1"></div>
+    <div class="border-top pt-3">
+      <div class="d-flex justify-content-between"><span>Subtotal</span><span id="subTotal">Rs. 0</span></div>
+      <div class="d-flex justify-content-between"><span>Shipping</span><span id="shipping">Rs. 0</span></div>
+      <div class="d-flex justify-content-between fw-bold fs-5 mt-1"><span>Total</span><span id="grandTotal">Rs. 0</span></div>
+      <button class="btn btn-navy w-100 mt-3" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade rc-modal" id="authModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="row g-0">
+        <div class="col-md-5 d-none d-md-block">
+          <div class="auth-art">
+            <div class="brand text-white fs-5">Rafi's Collection</div>
+            <div>
+              <h3 id="artTitle">Welcome <em>back.</em></h3>
+              <p class="small opacity-75 mb-4" id="artText">Sign in to view your cart, track orders and book your bespoke fitting.</p>
+              <ul>
+                <li><i class="bi bi-scissors"></i>Made-to-measure tailoring</li>
+                <li><i class="bi bi-truck"></i>Worldwide express delivery</li>
+                <li><i class="bi bi-patch-check"></i>Handloom heritage fabrics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="auth-form">
+            <button class="btn-close auth-close" data-bs-dismiss="modal"></button>
+
+            <form id="loginPane" novalidate>
+              <h4 class="mb-1">Sign in</h4>
+              <p class="text-muted small mb-4">Enter your details to continue.</p>
+              <div id="loginErr" class="err"></div>
+              <div class="field"><label>Email</label><div class="wrap"><input id="lEmail" type="email" placeholder="you@example.com" autocomplete="email"><i class="bi bi-envelope lead-i"></i></div></div>
+              <div class="field"><label>Password</label><div class="wrap"><input id="lPass" type="password" placeholder="Your password" autocomplete="current-password"><i class="bi bi-lock lead-i"></i><button type="button" class="eye" data-eye="lPass"><i class="bi bi-eye"></i></button></div></div>
+              <button class="btn-main mt-2" type="submit">Sign In <i class="bi bi-arrow-right ms-1"></i></button>
+              <p class="small text-center mt-4 mb-0">New to Rafi's Collection? <button type="button" class="link-btn" onclick="setAuth('signup')">Create an account</button></p>
+            </form>
+
+            <form id="signupPane" class="d-none" novalidate>
+              <h4 class="mb-1">Create account</h4>
+              <p class="text-muted small mb-4">Join to save your cart and check out faster.</p>
+              <div id="signupErr" class="err"></div>
+              <div class="field"><label>Full name</label><div class="wrap"><input id="sName" placeholder="Your full name" autocomplete="name"><i class="bi bi-person lead-i"></i></div></div>
+              <div class="field"><label>Email</label><div class="wrap"><input id="sEmail" type="email" placeholder="you@example.com" autocomplete="email"><i class="bi bi-envelope lead-i"></i></div></div>
+              <div class="row g-2">
+                <div class="col-sm-6 field"><label>Password</label><div class="wrap"><input id="sPass" type="password" placeholder="Min 6 characters" autocomplete="new-password"><i class="bi bi-lock lead-i"></i><button type="button" class="eye" data-eye="sPass"><i class="bi bi-eye"></i></button></div></div>
+                <div class="col-sm-6 field"><label>Confirm</label><div class="wrap"><input id="sPass2" type="password" placeholder="Repeat password" autocomplete="new-password"><i class="bi bi-shield-lock lead-i"></i><button type="button" class="eye" data-eye="sPass2"><i class="bi bi-eye"></i></button></div></div>
+              </div>
+              <div class="strength" style="margin-top:-.4rem"><div id="strBar"></div></div>
+              <div class="small text-muted mt-1 mb-3" id="strTxt">Use 8+ characters with numbers and symbols</div>
+              <button class="btn-main" type="submit">Create Account <i class="bi bi-arrow-right ms-1"></i></button>
+              <p class="small text-center mt-4 mb-0">Already have an account? <button type="button" class="link-btn" onclick="setAuth('login')">Sign in</button></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade rc-modal" id="reviewModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="auth-form">
+        <button class="btn-close auth-close" data-bs-dismiss="modal"></button>
+        <h4 class="mb-1">Write a review</h4>
+        <p class="text-muted small mb-4">Tell others about your purchase.</p>
+        <div id="reviewErr" class="err"></div>
+        <div class="field"><label>Product</label><div class="wrap"><select id="rvProduct"></select><i class="bi bi-bag lead-i"></i></div></div>
+        <div class="field"><label>Rating</label><div class="wrap">
+          <select id="rvRating">
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Very good</option>
+            <option value="3">3 - Good</option>
+            <option value="2">2 - Fair</option>
+            <option value="1">1 - Poor</option>
+          </select><i class="bi bi-star lead-i"></i></div></div>
+        <div class="field"><label>Title</label><div class="wrap"><input id="rvTitle" placeholder="Sum it up in a few words"><i class="bi bi-type lead-i"></i></div></div>
+        <div class="field"><label>Your review</label><div class="wrap"><textarea id="rvText" rows="3" placeholder="What did you like?"></textarea><i class="bi bi-chat-left-text lead-i"></i></div></div>
+        <button class="btn-main" id="rvSubmit" type="button">Submit review</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade rc-modal" id="checkoutModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="co-head">
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+        <h4 class="brand text-white mb-0">Secure Checkout</h4>
+        <div class="steps">
+          <div class="step active" id="st1"><span class="dot">1</span>Delivery</div><span class="step-line"></span>
+          <div class="step" id="st2"><span class="dot">2</span>Payment</div><span class="step-line"></span>
+          <div class="step" id="st3"><span class="dot">3</span>Review</div>
+        </div>
+      </div>
+      <div class="modal-body p-0">
+        <div class="row g-0">
+          <div class="col-lg-7"><div class="co-body">
+            <div id="coErr" class="err"></div>
+
+            <div id="co1">
+              <h5 class="mb-3 brand">Delivery details</h5>
+              <div class="row">
+                <div class="col-12 field"><label>Full name</label><div class="wrap"><input id="coName" placeholder="Receiver's full name"><i class="bi bi-person lead-i"></i></div></div>
+                <div class="col-md-6 field"><label>Phone</label><div class="wrap"><input id="coPhone" placeholder="+92 300 1234567"><i class="bi bi-telephone lead-i"></i></div></div>
+                <div class="col-md-6 field"><label>Email</label><div class="wrap"><input id="coEmail" type="email" placeholder="you@example.com"><i class="bi bi-envelope lead-i"></i></div></div>
+                <div class="col-md-6 field"><label>City</label><div class="wrap"><input id="coCity" placeholder="Islamabad"><i class="bi bi-geo-alt lead-i"></i></div></div>
+                <div class="col-md-6 field"><label>Postal code</label><div class="wrap"><input id="coZip" placeholder="44000"><i class="bi bi-mailbox lead-i"></i></div></div>
+                <div class="col-12 field"><label>Full address</label><div class="wrap"><textarea id="coAddr" rows="2" placeholder="House, street, area"></textarea><i class="bi bi-house lead-i"></i></div></div>
+                <div class="col-12 field"><label>Tailoring / delivery note (optional)</label><div class="wrap"><input id="coNote" placeholder="e.g. chest 40, length 42, call before delivery"><i class="bi bi-pencil lead-i"></i></div></div>
+              </div>
+            </div>
+
+            <div id="co2" class="d-none">
+              <h5 class="mb-3 brand">Payment method</h5>
+              <label class="pay-opt active" data-pay="Cash on Delivery"><input type="radio" name="pay" checked>
+                <span class="ic"><i class="bi bi-cash-coin"></i></span><div><div class="fw-semibold">Cash on Delivery</div><div class="small text-muted">Pay when your order arrives</div></div><i class="bi bi-circle tick"></i></label>
+              <label class="pay-opt" data-pay="Card"><input type="radio" name="pay">
+                <span class="ic"><i class="bi bi-credit-card-2-front"></i></span><div><div class="fw-semibold">Credit / Debit Card</div><div class="small text-muted">Visa, Mastercard</div></div><i class="bi bi-circle tick"></i></label>
+              <label class="pay-opt" data-pay="Bank Transfer"><input type="radio" name="pay">
+                <span class="ic"><i class="bi bi-bank"></i></span><div><div class="fw-semibold">Bank Transfer</div><div class="small text-muted">Details sent after you place the order</div></div><i class="bi bi-circle tick"></i></label>
+
+              <div id="cardFields" class="d-none mt-3">
+                <div class="field"><label>Card number</label><div class="wrap"><input id="cNum" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456"><i class="bi bi-credit-card lead-i"></i></div></div>
+                <div class="field"><label>Name on card</label><div class="wrap"><input id="cName" placeholder="As printed on card"><i class="bi bi-person lead-i"></i></div></div>
+                <div class="row">
+                  <div class="col-6 field"><label>Expiry</label><div class="wrap"><input id="cExp" inputmode="numeric" maxlength="5" placeholder="MM/YY"><i class="bi bi-calendar2 lead-i"></i></div></div>
+                  <div class="col-6 field"><label>CVV</label><div class="wrap"><input id="cCvv" type="password" inputmode="numeric" maxlength="4" placeholder="123"><i class="bi bi-shield-lock lead-i"></i></div></div>
+                </div>
+                <div class="small text-muted"><i class="bi bi-info-circle"></i> Demo store: card details are only checked for format here and are never sent or saved.</div>
+              </div>
+            </div>
+
+            <div id="co3" class="d-none">
+              <h5 class="mb-3 brand">Review your order</h5>
+              <div class="review-box"><h6>Deliver to <button class="link-btn small" onclick="goStep(1)">Edit</button></h6><div id="rvDelivery"></div></div>
+              <div class="review-box"><h6>Payment <button class="link-btn small" onclick="goStep(2)">Edit</button></h6><div id="rvPay"></div></div>
+              <div class="small text-muted"><i class="bi bi-shield-check"></i> By placing the order you agree to our terms and return policy.</div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button class="btn-ghost" id="coBack" type="button"><i class="bi bi-arrow-left me-1"></i>Back</button>
+              <button class="btn-main" id="coNext" type="button" style="width:auto;padding:.9rem 2rem">Continue <i class="bi bi-arrow-right ms-1"></i></button>
+            </div>
+          </div></div>
+
+          <div class="col-lg-5"><div class="co-side">
+            <h6 class="text-uppercase small text-muted mb-3" style="letter-spacing:.12em">Order summary</h6>
+            <div id="coSummary"></div>
+            <hr>
+            <div class="d-flex justify-content-between small mb-1"><span>Subtotal</span><span id="coSub"></span></div>
+            <div class="d-flex justify-content-between small mb-1"><span>Shipping</span><span id="coShip"></span></div>
+            <div class="d-flex justify-content-between fw-bold fs-5 mt-2"><span>Total</span><span id="coTotal"></span></div>
+            <div class="small text-muted mt-3"><i class="bi bi-truck"></i> Free shipping on orders above Rs. 50,000</div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade rc-modal" id="successModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content text-center p-5">
+  <div class="success-ring"><i class="bi bi-check-lg"></i></div>
+  <h3 class="brand">Order Confirmed!</h3>
+  <p class="text-muted mb-1" id="orderMsg"></p>
+  <p class="small text-muted">Estimated delivery: 5–7 working days</p>
+  <button class="btn-main mt-3" data-bs-dismiss="modal">Continue Shopping</button>
+</div></div></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toast" class="toast text-bg-dark"><div class="toast-body" id="toastMsg"></div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const API_BASE = location.protocol === "file:" ? "http://localhost:3000" : "";
+
+const IMG = {
+  hero: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdQluPg4FdtPENKl7kw5OHhV7PoCPbVySflnNiZgCy3A&s=10",
+  col1: "https://www.monarchy.pk/cdn/shop/files/5_b3da1db8-d41e-4e6f-9dad-44b136f616ed.jpg?v=1741003969&width=533",
+  col2: "https://m.media-amazon.com/images/I/B1pppR4gVKL._CLa%7C2140%2C2000%7CA16dvfeTfQL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_UY1000_.png",
+  col3: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCPAuQ8S2XhYh-d8cKnRW17vBEKs816sclbSp-Kchzpw&s=10",
+  col4: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkKjcNpYWru5naXAH84vhAMCy0G02uqb9KmIPkXGDEww&s=10",
+  col5: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxkrnx0ESso9O_lhsuZDxr5_koA02D873aG2-h2LcK5Q&s=10",
+  col6: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRq0KJTvIWfG5s_1AA20LXs-vB-UPOs2xZASm9v3UUkQ&s=10",
+  col7: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt9LM1xU_MTILb0y7_Ld2qVsRXvn1m4xOR1Q6uQLCgdQ&s",
+  col8: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGfZvK3oG3FlLTH7aryFXvh_L74pCbaI6pxMdJ22y8KA&s=10",
+  p1: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLn6ZkgObSC7S-Ar3oRlu4b3OMyBu9DdBOGdzepXZB3w&s=10",
+  p2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBtKi15RvYf43ifLYcGjUjlimEPzPT1g8Dq-WYnbbfxw&s",
+  p3: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnifDeGxCjeXJtosPDZbUAXdgx7aWZQlhkvbFiF_o3kw&s=10",
+  p4: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRVRnFkzarHkWKbhhxmpS8ynt9tUKlKkL-mlNQ8qVbZA&s=10",
+  p5: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPoMMH38oqwZJ5AsVGHQFn7pvBq4EBs0YbnDUEIM6KVg&s=10",
+  p6: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn3CVOylvGCaiLB47scAHou8NC2R6r02WK_gekDToF2Q&s=10",
+};
+
+const COLORS = [["#4a90e2","#9333ea"],["#ec4899","#fb923c"],["#2dd4bf","#4a90e2"],["#fb923c","#facc15"],["#9333ea","#ec4899"],["#facc15","#2dd4bf"]];
+const SIZES = ["S","M","L","XL"];
+
+let ALL = [], PRODUCTS = [], COLLECTIONS = [], REVIEWS = [], CATS = ["All"];
+let filter = "All";
+const sel = {};
+let session = null;
+let token = localStorage.getItem("rc_token");
+const emptyCart = () => ({items:[],subtotal:0,shipping:0,total:0,count:0});
+let cartData = emptyCart();
+
+const fmt = n => "Rs. " + Number(n).toLocaleString("en-PK");
+const $ = id => document.getElementById(id);
+const modal = id => bootstrap.Modal.getOrCreateInstance($(id));
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const imgOf = p => p.image || IMG[p.img] || "";
+function toast(msg){ $("toastMsg").textContent = msg; bootstrap.Toast.getOrCreateInstance($("toast"),{delay:2400}).show(); }
+function showErr(id,msg){ const e=$(id); e.textContent=msg; e.classList.add("show"); }
+function clearErr(id){ $(id).classList.remove("show"); }
+
+async function api(path, opt = {}){
+  let res;
+  try{
+    res = await fetch(API_BASE + "/api" + path, {
+      method: opt.method || "GET",
+      headers: {"Content-Type":"application/json", ...(token ? {Authorization:"Bearer " + token} : {})},
+      body: opt.body ? JSON.stringify(opt.body) : undefined
+    });
+  }catch{
+    throw new Error("Cannot reach the server. Start it with: npm start");
+  }
+  let data = null;
+  try{ data = await res.json(); }catch{}
+  if(!res.ok){
+    if(res.status === 401 && token){
+      token = null; session = null; cartData = emptyCart();
+      localStorage.removeItem("rc_token");
+      renderAuth(); renderCart();
+    }
+    throw new Error((data && data.error) || "Request failed");
+  }
+  return data;
+}
+
+function imgHTML(src, alt, i = 0){
+  const [c1,c2] = COLORS[i % COLORS.length];
+  const a = esc(alt);
+  const ph = `<div class="ph" style="--c1:${c1};--c2:${c2}">${a}</div>`;
+  if(!src) return ph;
+  return `<img src="${esc(src)}" alt="${a}" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML=this.dataset.ph" data-ph='${ph.replace(/'/g,"&#39;")}'>`;
+}
+
+function renderCollections(){
+  $("collectionRow").innerHTML = COLLECTIONS.map((c,i)=>`
+    <div class="col-6 col-lg-3"><div class="col-card" onclick="document.getElementById('products').scrollIntoView()">
+      ${imgHTML(IMG[c.img],c.name,i)}
+      <div class="ov"><small class="text-uppercase" style="letter-spacing:.15em;font-size:.65rem">${esc(c.tag)}</small>
+      <h5 class="mb-1">${esc(c.name)}</h5><small>Explore ${c.n} styles →</small></div></div></div>`).join("");
+}
+
+function renderFilters(){
+  $("filters").innerHTML = CATS.map(c=>`<button class="filter-btn ${c===filter?'active':''}" onclick="setFilter(this.dataset.c)" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+}
+async function setFilter(c){
+  filter = c; renderFilters();
+  try{ PRODUCTS = await api("/products" + (c === "All" ? "" : "?category=" + encodeURIComponent(c))); }
+  catch(e){ toast(e.message); }
+  renderProducts();
+}
+
+function renderProducts(){
+  $("productRow").innerHTML = PRODUCTS.length ? PRODUCTS.map((p,i)=>{
+    const s = sel[p.id] || "M";
+    const rating = p.reviewCount
+      ? `<div class="stars">${"★".repeat(Math.round(p.rating))} <span class="text-muted">${p.rating.toFixed(1)} (${p.reviewCount} reviews)</span></div>`
+      : `<div class="small text-muted">New arrival</div>`;
+    return `<div class="col-md-6 col-lg-4"><div class="card pcard glass">
+      <div class="position-relative"><span class="badge-tag">${esc(p.tag).toUpperCase()}</span><div class="pimg">${imgHTML(imgOf(p),p.name,i)}</div></div>
+      <div class="card-body">
+        ${rating}
+        <h6 class="mt-1" style="font-family:'Playfair Display'">${esc(p.name)}</h6>
+        <p class="small text-muted mb-2">${esc(p.desc)}</p>
+        <div class="d-flex gap-1 mb-3">${SIZES.map(z=>`<button class="size-btn ${z===s?'active':''}" onclick="pickSize(${p.id},'${z}')">${z}</button>`).join("")}</div>
+        <div class="d-flex justify-content-between align-items-center">
+          <strong>${fmt(p.price)}</strong>
+          <button class="btn btn-rust btn-sm" onclick="addToCart(${p.id})"><i class="bi bi-bag-plus"></i> Add to Cart</button>
+        </div></div></div></div>`;
+  }).join("") : `<div class="col-12"><p class="text-center text-muted">No products found.</p></div>`;
+}
+function pickSize(id,z){ sel[id] = z; renderProducts(); }
+
+function renderReviews(){
+  $("reviewRow").innerHTML = REVIEWS.length ? REVIEWS.slice(0,6).map(r=>`
+    <div class="col-md-4"><div class="glass p-4 h-100">
+      <div class="stars mb-2">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</div>
+      <h5>${esc(r.title)}</h5>
+      <p class="text-muted small">${esc(r.comment)}</p>
+      <strong class="small">${esc(r.userName)}</strong>
+      <div class="small text-muted">${r.city ? esc(r.city) + " · " : ""}${esc(r.productName)}</div>
+    </div></div>`).join("") : `<p class="text-center text-muted">No reviews yet. Be the first!</p>`;
+}
+
+function openReview(){
+  if(!session){ toast("Please sign in to write a review"); return openAuth("login"); }
+  $("rvProduct").innerHTML = ALL.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join("");
+  clearErr("reviewErr");
+  modal("reviewModal").show();
+}
+$("rvSubmit").onclick = async () => {
+  const title = $("rvTitle").value.trim(), comment = $("rvText").value.trim();
+  if(!title || !comment) return showErr("reviewErr","Please add a title and your review.");
+  $("rvSubmit").disabled = true;
+  try{
+    await api(`/products/${$("rvProduct").value}/reviews`, {method:"POST", body:{rating:Number($("rvRating").value), title, comment}});
+    modal("reviewModal").hide();
+    $("rvTitle").value = ""; $("rvText").value = "";
+    REVIEWS = await api("/reviews"); renderReviews();
+    ALL = await api("/products");
+    await setFilter(filter);
+    toast("Thanks for your review!");
+  }catch(e){ showErr("reviewErr", e.message); }
+  $("rvSubmit").disabled = false;
+};
+
+async function loadCart(){
+  cartData = session ? await api("/cart") : emptyCart();
+  renderCart();
+}
+async function addToCart(id){
+  if(!session){ toast("Please sign in to add items to your cart"); return openAuth("login"); }
+  try{
+    const size = sel[id] || "M";
+    cartData = await api("/cart", {method:"POST", body:{productId:id, size, qty:1}});
+    renderCart();
+    const p = ALL.find(x=>x.id===id);
+    toast(`${p ? p.name : "Item"} (${size}) added to cart`);
+  }catch(e){ toast(e.message); }
+}
+async function changeQty(itemId, qty){
+  try{ cartData = await api("/cart/" + itemId, {method:"PUT", body:{qty}}); renderCart(); }catch(e){ toast(e.message); }
+}
+async function changeSize(itemId, size){
+  try{ cartData = await api("/cart/" + itemId, {method:"PUT", body:{size}}); renderCart(); }catch(e){ toast(e.message); }
+}
+async function removeItem(itemId){
+  try{ cartData = await api("/cart/" + itemId, {method:"DELETE"}); renderCart(); }catch(e){ toast(e.message); }
+}
+
+function renderCart(){
+  $("cartCount").textContent = cartData.count;
+  $("cartItems").innerHTML = cartData.items.length ? cartData.items.map(it=>{
+    const p = it.product;
+    return `<div class="cart-item d-flex gap-3 mb-3 pb-3 border-bottom">
+      ${imgHTML(imgOf(p), p.name.split(" ").slice(0,2).join(" "), p.id-1)}
+      <div class="flex-grow-1">
+        <div class="small fw-semibold">${esc(p.name)}</div>
+        <select class="form-select form-select-sm my-1" style="width:80px" onchange="changeSize(${it.id},this.value)">
+          ${SIZES.map(z=>`<option ${z===it.size?'selected':''}>${z}</option>`).join("")}</select>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-sm btn-outline-dark" onclick="changeQty(${it.id},${it.qty-1})">−</button>
+          <span>${it.qty}</span>
+          <button class="btn btn-sm btn-outline-dark" onclick="changeQty(${it.id},${it.qty+1})">+</button>
+          <span class="ms-auto fw-semibold small">${fmt(it.lineTotal)}</span>
+          <button class="btn btn-sm text-danger" onclick="removeItem(${it.id})"><i class="bi bi-trash"></i></button>
+        </div></div></div>`;
+  }).join("") : `<p class="text-center text-muted mt-5"><i class="bi bi-bag fs-1 d-block"></i>${session ? "Your cart is empty" : "Sign in to see your cart"}</p>`;
+  $("subTotal").textContent = fmt(cartData.subtotal);
+  $("shipping").textContent = cartData.shipping ? fmt(cartData.shipping) : (cartData.subtotal ? "Free" : fmt(0));
+  $("grandTotal").textContent = fmt(cartData.total);
+}
+
+function renderAuth(){
+  $("authArea").innerHTML = session
+    ? `<span class="small me-2"><i class="bi bi-person-circle"></i> ${esc(session.name.split(" ")[0])}</span><button class="btn btn-sm btn-outline-dark" onclick="logout()">Logout</button>`
+    : `<button class="btn btn-sm btn-outline-dark" onclick="openAuth('login')">Login</button>
+       <button class="btn btn-sm btn-navy" style="padding:.3rem .8rem" onclick="openAuth('signup')">Sign Up</button>`;
+}
+function openAuth(mode){ setAuth(mode); modal("authModal").show(); }
+function setAuth(mode){
+  const login = mode === "login";
+  $("loginPane").classList.toggle("d-none", !login);
+  $("signupPane").classList.toggle("d-none", login);
+  $("artTitle").innerHTML = login ? "Welcome <em>back.</em>" : "Join the <em>atelier.</em>";
+  $("artText").textContent = login
+    ? "Sign in to view your cart, track orders and book your bespoke fitting."
+    : "Create an account to save your cart, track orders and get early access to new collections.";
+  clearErr("loginErr"); clearErr("signupErr");
+}
+async function startSession(r){
+  token = r.token; session = r.user;
+  localStorage.setItem("rc_token", token);
+  renderAuth();
+  await loadCart();
+}
+
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-eye]"); if(!b) return;
+  const inp = $(b.dataset.eye), show = inp.type === "password";
+  inp.type = show ? "text" : "password";
+  b.innerHTML = `<i class="bi bi-eye${show?'-slash':''}"></i>`;
+});
+
+$("sPass").addEventListener("input", e=>{
+  const v = e.target.value; let s = 0;
+  if(v.length>=6) s++; if(v.length>=10) s++; if(/\d/.test(v)&&/[A-Za-z]/.test(v)) s++; if(/[^A-Za-z0-9]/.test(v)) s++;
+  const col = ["#e5484d","#f5a524","#f5a524","#2dd4bf","#17a673"][s], txt = ["Too short","Weak","Okay","Good","Strong"][s];
+  $("strBar").style.width = (v ? Math.max(s,1)*25 : 0) + "%"; $("strBar").style.background = col;
+  $("strTxt").textContent = v ? txt + " password" : "Use 8+ characters with numbers and symbols";
+});
+
+$("signupPane").onsubmit = async e => {
+  e.preventDefault();
+  const name = $("sName").value.trim(), email = $("sEmail").value.trim().toLowerCase(), p1 = $("sPass").value, p2 = $("sPass2").value;
+  if(!name || !email || !p1) return showErr("signupErr","Please fill in all fields.");
+  if(!/^\S+@\S+\.\S+$/.test(email)) return showErr("signupErr","Enter a valid email address.");
+  if(p1.length < 6) return showErr("signupErr","Password must be at least 6 characters.");
+  if(p1 !== p2) return showErr("signupErr","Passwords do not match.");
+  try{
+    const r = await api("/auth/signup", {method:"POST", body:{name, email, password:p1}});
+    await startSession(r);
+    clearErr("signupErr"); modal("authModal").hide();
+    $("signupPane").reset(); toast(`Welcome, ${r.user.name}!`);
+  }catch(err){ showErr("signupErr", err.message); }
+};
+
+$("loginPane").onsubmit = async e => {
+  e.preventDefault();
+  const email = $("lEmail").value.trim().toLowerCase(), password = $("lPass").value;
+  if(!email || !password) return showErr("loginErr","Enter your email and password.");
+  try{
+    const r = await api("/auth/login", {method:"POST", body:{email, password}});
+    await startSession(r);
+    clearErr("loginErr"); modal("authModal").hide();
+    $("loginPane").reset(); toast(`Welcome back, ${r.user.name}!`);
+  }catch(err){ showErr("loginErr", err.message); }
+};
+
+async function logout(){
+  try{ await api("/auth/logout", {method:"POST"}); }catch{}
+  token = null; session = null; cartData = emptyCart();
+  localStorage.removeItem("rc_token");
+  renderAuth(); renderCart(); toast("Logged out");
+}
+
+let coStep = 1, payMethod = "Cash on Delivery";
+
+function fillSummary(){
+  $("coSummary").innerHTML = cartData.items.map(it=>`
+    <div class="sum-item">${imgHTML(imgOf(it.product), it.product.name, it.product.id-1)}
+      <div class="flex-grow-1"><div class="small fw-semibold">${esc(it.product.name)}</div><div class="qty">Size ${it.size} · Qty ${it.qty}</div></div>
+      <div class="small fw-semibold">${fmt(it.lineTotal)}</div></div>`).join("");
+  $("coSub").textContent = fmt(cartData.subtotal);
+  $("coShip").textContent = cartData.shipping ? fmt(cartData.shipping) : "Free";
+  $("coTotal").textContent = fmt(cartData.total);
+}
+
+function goStep(n){
+  coStep = n; clearErr("coErr");
+  [1,2,3].forEach(i=>{
+    $("co"+i).classList.toggle("d-none", i!==n);
+    const st = $("st"+i); st.classList.toggle("active", i===n); st.classList.toggle("done", i<n);
+    st.querySelector(".dot").innerHTML = i<n ? '<i class="bi bi-check-lg"></i>' : i;
+  });
+  $("coBack").style.visibility = n===1 ? "hidden" : "visible";
+  $("coNext").innerHTML = n===3 ? 'Place Order <i class="bi bi-lock-fill ms-1"></i>' : 'Continue <i class="bi bi-arrow-right ms-1"></i>';
+  if(n===3) fillReview();
+  document.querySelector("#checkoutModal .modal-body").scrollTop = 0;
+}
+
+function fillReview(){
+  const v = id => esc($(id).value.trim());
+  $("rvDelivery").innerHTML = `<strong>${v("coName")}</strong><br>${v("coAddr")}, ${v("coCity")} ${v("coZip")}<br>${v("coPhone")} · ${v("coEmail")}` + (v("coNote") ? `<br><span class="text-muted">Note: ${v("coNote")}</span>` : "");
+  const card = payMethod === "Card" ? ` ending in ${esc($("cNum").value.replace(/\s/g,"").slice(-4))}` : "";
+  $("rvPay").innerHTML = `<i class="bi bi-credit-card-2-front me-1"></i>${payMethod}${card}`;
+}
+
+function validateStep(){
+  const v = id => $(id).value.trim();
+  if(coStep === 1){
+    if(!v("coName")||!v("coPhone")||!v("coEmail")||!v("coCity")||!v("coAddr")) return "Please fill in name, phone, email, city and address.";
+    if(!/^[0-9+\-\s]{10,15}$/.test(v("coPhone"))) return "Enter a valid phone number.";
+    if(!/^\S+@\S+\.\S+$/.test(v("coEmail"))) return "Enter a valid email address.";
+  }
+  if(coStep === 2 && payMethod === "Card"){
+    if($("cNum").value.replace(/\s/g,"").length !== 16) return "Card number must be 16 digits.";
+    if(!v("cName")) return "Enter the name on the card.";
+    if(!/^(0[1-9]|1[0-2])\/\d{2}$/.test(v("cExp"))) return "Expiry must be in MM/YY format.";
+    if(!/^\d{3,4}$/.test(v("cCvv"))) return "Enter a valid CVV.";
+  }
+  return "";
+}
+$("coNext").onclick = () => {
+  const err = validateStep(); if(err) return showErr("coErr", err);
+  if(coStep < 3) return goStep(coStep + 1);
+  placeOrder();
+};
+$("coBack").onclick = () => goStep(coStep - 1);
+
+document.querySelectorAll(".pay-opt").forEach(el => el.onclick = () => {
+  document.querySelectorAll(".pay-opt").forEach(x => x.classList.remove("active"));
+  el.classList.add("active"); payMethod = el.dataset.pay;
+  $("cardFields").classList.toggle("d-none", payMethod !== "Card");
+});
+
+$("cNum").addEventListener("input", e=>{ e.target.value = e.target.value.replace(/\D/g,"").slice(0,16).replace(/(.{4})/g,"$1 ").trim(); });
+$("cExp").addEventListener("input", e=>{ let d = e.target.value.replace(/\D/g,"").slice(0,4); e.target.value = d.length>2 ? d.slice(0,2)+"/"+d.slice(2) : d; });
+$("cCvv").addEventListener("input", e=>{ e.target.value = e.target.value.replace(/\D/g,"").slice(0,4); });
+
+$("checkoutBtn").onclick = async () => {
+  bootstrap.Offcanvas.getOrCreateInstance($("cartCanvas")).hide();
+  if(!session){ toast("Please sign in to checkout"); return openAuth("login"); }
+  try{ await loadCart(); }catch(e){ return toast(e.message); }
+  if(!cartData.items.length) return toast("Your cart is empty");
+  $("coName").value = session.name; $("coEmail").value = session.email;
+  fillSummary(); goStep(1); modal("checkoutModal").show();
+};
+
+async function placeOrder(){
+  const v = id => $(id).value.trim();
+  $("coNext").disabled = true;
+  try{
+    const order = await api("/orders", {method:"POST", body:{
+      delivery:{name:v("coName"), phone:v("coPhone"), email:v("coEmail"), city:v("coCity"), zip:v("coZip"), address:v("coAddr"), note:v("coNote")},
+      paymentMethod: payMethod
+    }});
+    $("orderMsg").textContent = `Order ${order.orderNo} · ${fmt(order.total)} · ${order.paymentMethod}. A confirmation will be sent to ${order.delivery.email}.`;
+    document.querySelectorAll("#co1 input,#co1 textarea,#cardFields input").forEach(i => i.value = "");
+    await loadCart();
+    modal("checkoutModal").hide(); modal("successModal").show();
+  }catch(e){ showErr("coErr", e.message); }
+  $("coNext").disabled = false;
+}
+
+(async function init(){
+  renderAuth(); renderCart();
+  try{
+    const [all, cols, revs] = await Promise.all([api("/products"), api("/collections"), api("/reviews")]);
+    ALL = all; PRODUCTS = all; COLLECTIONS = cols; REVIEWS = revs;
+    CATS = ["All", ...new Set(all.map(p => p.category))];
+    renderCollections(); renderFilters(); renderProducts(); renderReviews();
+  }catch(e){
+    $("productRow").innerHTML = `<div class="col-12"><div class="alert alert-warning">${esc(e.message)}</div></div>`;
+  }
+  $("heroFrame").innerHTML = imgHTML(IMG.hero, "Signature Boski Ensemble");
+  if(token){
+    try{ session = (await api("/auth/me")).user; renderAuth(); await loadCart(); }
+    catch{ token = null; localStorage.removeItem("rc_token"); }
+  }
+})();
+</script>
+</body>
+</html>

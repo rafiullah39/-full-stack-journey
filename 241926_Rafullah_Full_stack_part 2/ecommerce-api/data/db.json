@@ -1,0 +1,192 @@
+{
+  "counters": {
+    "user": 1,
+    "product": 6,
+    "review": 3,
+    "order": 0,
+    "item": 0
+  },
+  "users": [
+    {
+      "id": 1,
+      "name": "Rafi khan",
+      "email": "krafi0500@gmail.com",
+      "salt": "a2ff65c9b5d7e660273a7ad0818acedc",
+      "hash": "28715ff3ca9df84c79585215ca1dfbe7b4bae184f6287802769e7cbac17f3e0de799b4cc23ff64795172a9db5fffc0d261ba22f93333de34688e19887c7a43c2",
+      "createdAt": "2026-10-25T15:10:21.056Z"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "03f4e2c5466f75021e37bbf1ba0d02ae19a23722b0c5b743",
+      "userId": 1,
+      "createdAt": "2026-10-25T15:11:53.335Z"
+    }
+  ],
+  "carts": {},
+  "orders": [],
+  "collections": [
+    {
+      "id": 1,
+      "img": "col1",
+      "name": "Royal Shalwar Kameez",
+      "n": 28,
+      "tag": "Signature Line"
+    },
+    {
+      "id": 2,
+      "img": "col2",
+      "name": "Vintage Old-School Shirts",
+      "n": 16,
+      "tag": "Retro Revival"
+    },
+    {
+      "id": 3,
+      "img": "col3",
+      "name": "Heritage Silk Waistcoats",
+      "n": 22,
+      "tag": "Heirloom Zari"
+    },
+    {
+      "id": 4,
+      "img": "col4",
+      "name": "Vintage Wristwatches",
+      "n": 12,
+      "tag": "Old-School Time"
+    },
+    {
+      "id": 5,
+      "img": "col5",
+      "name": "Peshawari Chappals",
+      "n": 18,
+      "tag": "Hand-Stitched Leather"
+    },
+    {
+      "id": 6,
+      "img": "col6",
+      "name": "Retro Aviator Sunglasses",
+      "n": 14,
+      "tag": "70s Classics"
+    },
+    {
+      "id": 7,
+      "img": "col7",
+      "name": "Vintage Leather Jackets",
+      "n": 10,
+      "tag": "Heritage Outerwear"
+    },
+    {
+      "id": 8,
+      "img": "col8",
+      "name": "Karakul Caps & Pashmina Shawls",
+      "n": 20,
+      "tag": "Winter Heritage"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "img": "p1",
+      "image": "",
+      "name": "The Swat Valley Heirloomed Shalwar Kameez",
+      "category": "Shalwar Kameez",
+      "tag": "Bespoke Heritage",
+      "price": 38500,
+      "rating": 5,
+      "reviewCount": 102,
+      "desc": "Cream boski silk with tonal banarsi kameez detail."
+    },
+    {
+      "id": 2,
+      "img": "p2",
+      "image": "",
+      "name": "Old-School Retro Camp Collar Shirt",
+      "category": "Vintage Shirts",
+      "tag": "Vintage Classic",
+      "price": 18000,
+      "rating": 4.8,
+      "reviewCount": 89,
+      "desc": "1970s block-printed slub cotton in indigo & terracotta."
+    },
+    {
+      "id": 3,
+      "img": "p3",
+      "image": "",
+      "name": "Nawab Zari Embellished Raw Silk Waistcoat",
+      "category": "Waistcoats",
+      "tag": "Hand-Embroidered",
+      "price": 32500,
+      "rating": 5,
+      "reviewCount": 206,
+      "desc": "Midnight royal cobalt with antique gold dabka work."
+    },
+    {
+      "id": 4,
+      "img": "p4",
+      "image": "",
+      "name": "Peshawari Kurta with Hand-Pleated Shalwar",
+      "category": "Shalwar Kameez",
+      "tag": "Limited Batch",
+      "price": 25000,
+      "rating": 4.9,
+      "reviewCount": 76,
+      "desc": "Sage olive khaddar with authentic wide-cut chest canvas."
+    },
+    {
+      "id": 5,
+      "img": "p5",
+      "image": "",
+      "name": "Artisanal Cuban Linen Vintage Shirt",
+      "category": "Vintage Shirts",
+      "tag": "Pure Linen",
+      "price": 19800,
+      "rating": 4.9,
+      "reviewCount": 115,
+      "desc": "Saffron ochre pure linen with mother-of-pearl buttons."
+    },
+    {
+      "id": 6,
+      "img": "p6",
+      "image": "",
+      "name": "Imperial Jamawar Occasion Kameez Set",
+      "category": "Royal Kurtas",
+      "tag": "Bridal / Occasion",
+      "price": 48000,
+      "rating": 5,
+      "reviewCount": 170,
+      "desc": "Deep maroon & gold jacquard with pleated chudidar."
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "productId": 1,
+      "userName": "Shahzad K. Malik",
+      "city": "Mayfair, London",
+      "rating": 5,
+      "title": "The Raw Collar Stiffness is Flawless",
+      "comment": "Finding a tailored Shalwar Kameez in London with authentic canvas fusing has always been nearly impossible. Rafi's Collection crafted mine to bespoke perfection.",
+      "createdAt": "2026-10-03T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "productId": 2,
+      "userName": "Tariq Rehman",
+      "city": "Dubai DIFC",
+      "rating": 5,
+      "title": "Vintage Cuban Shirts with Pure Soul",
+      "comment": "The old-school camp collar shirt transports you directly to 1974. Heavy slub cotton, natural mother-of-pearl buttons, and shoulder drape that breathes effortlessly.",
+      "createdAt": "2026-10-02T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "productId": 3,
+      "userName": "Ali Asghar",
+      "city": "Islamabad",
+      "rating": 5,
+      "title": "Wedding Waistcoat was the Highlight",
+      "comment": "Ordered the Nawab Zari Raw Silk Waistcoat for my brother's Nikah ceremony. The antique gold dabka work has real weight and heritage patina.",
+      "createdAt": "2026-10-01T10:00:00.000Z"
+    }
+  ]
+}

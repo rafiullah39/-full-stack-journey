@@ -1,0 +1,18 @@
+{
+  "name": "cs301-week7-step-by-step-node",
+  "version": "2.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "hello": "node 01-node-basics/01-hello.js",
+    "modules": "node 02-modules/02-commonjs/main.js",
+    "esm": "node 02-modules/03-es-modules/main.js",
+    "events": "node 03-events/01-listener-and-emit.js",
+    "files": "node 04-files/03-promises-read-write.js",
+    "http": "node 05-http-rest/01-hello-http-server.js",
+    "memory": "node 06-student-api/01-memory-api.js",
+    "api": "node 06-student-api/02-persistent-api/server.js",
+    "test": "node --test 06-student-api/02-persistent-api/test/api.test.js"
+  },
+  "engines": {"node": ">=20"}
+}
