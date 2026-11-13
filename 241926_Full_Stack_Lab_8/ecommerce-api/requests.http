@@ -1,0 +1,67 @@
+@host = http://localhost:3000
+
+### 1. Signup
+POST {{host}}/auth/signup
+Content-Type: application/json
+
+{"name":"Rafi","email":"rafi@test.com","password":"123456","confirmPassword":"123456"}
+
+### 2. Login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{"email":"rafi@test.com","password":"123456"}
+
+### 3. All products
+GET {{host}}/products
+
+### 4. Products by category
+GET {{host}}/products?category=Waistcoats
+
+### 5. Add review
+POST {{host}}/products/1/reviews
+Content-Type: application/json
+
+{"user":"Rafi","rating":5,"comment":"Great quality"}
+
+### 6. Add to cart
+POST {{host}}/cart/1
+Content-Type: application/json
+
+{"productId":1,"size":"M"}
+
+### 7. View cart
+GET {{host}}/cart/1
+
+### 8. Change quantity
+PATCH {{host}}/cart/1/quantity
+Content-Type: application/json
+
+{"productId":1,"size":"M","qty":3}
+
+### 9. Change size
+PATCH {{host}}/cart/1/size
+Content-Type: application/json
+
+{"productId":1,"size":"M","newSize":"L"}
+
+### 10. Place order
+POST {{host}}/orders/1
+Content-Type: application/json
+
+{
+  "name": "Rafi",
+  "phone": "03001234567",
+  "email": "rafi@test.com",
+  "city": "Islamabad",
+  "zip": "44000",
+  "address": "House 1, Street 2",
+  "note": "Call before delivery",
+  "paymentMethod": "Cash on Delivery"
+}
+
+### 11. My orders
+GET {{host}}/orders/user/1
+
+### 12. Remove item from cart
+DELETE {{host}}/cart/1/items/1/L
